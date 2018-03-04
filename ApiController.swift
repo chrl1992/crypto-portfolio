@@ -36,11 +36,11 @@ class Api{
     //supported cryptocoins
     let cryptocurrencies = [("ETH", "Ethereum"), ("BCH","Bitcoin Cash"), ("BTC","Bitcoin"), ("XRP", "Ripple"), ("DASH","Dash"), ("LTC","Litecoin"), ("GNO","Gnosis"), ("XMR","Monero")]
     func fetch() -> Array<cryptoCoin> {
-        var pricedata = [cryptoCoin]()
+        //var pricedata = [cryptoCoin]()
         //cryptocurrencies[index].0 or 1
         for coin in cryptocurrencies{
             
-            var crypto = cryptoCoin()
+            //var crypto = cryptoCoin()
             
             let urlToParse = URL(string: "https://min-api.cryptocompare.com/data/pricemulti?fsyms=" + coin.0 + "&tsyms=USD,EUR,DKK")
             let task = URLSession.shared.dataTask(with: urlToParse!) { (data, response, error) in
@@ -53,7 +53,7 @@ class Api{
                             do{
                                 let fetchedData = try JSONSerialization.jsonObject(with: content, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
                                 if let prices = fetchedData[coin.0] as? NSDictionary{
-                                    if let p = prices["DKK"]{
+                                    //if let p = prices["DKK"]{
                                         //crypto.USD = p
                                         
                                     }
